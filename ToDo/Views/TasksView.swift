@@ -23,11 +23,16 @@ struct TasksView: View {
         
             //MARK: LIST
             List {
-                ForEach(tasksVM.items.indices) { i in
-                    ItemView(item: self.$tasksVM.items[i])
+                ForEach(tasksVM.items) { item in
+                    ItemView(item: item)
                         .listRowBackground(backgroundColor)
                         .listRowSeparatorTint(rowSeparatorColor)
                 }
+//                ForEach(tasksVM.items.indices) { i in
+//                    ItemView(item: self.$tasksVM.items[i])
+//                        .listRowBackground(backgroundColor)
+//                        .listRowSeparatorTint(rowSeparatorColor)
+//                }
                 .onDelete(perform: tasksVM.deleteItem)
             }
             .listStyle(.plain)

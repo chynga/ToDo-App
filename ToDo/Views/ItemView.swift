@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ItemView: View {
     @EnvironmentObject var tasksVM: TasksVM
-    @Binding var item: ItemModel
+    var item: ItemModel
     var body: some View {
         NavigationLink {
-            TaskView(item: item)
+//            TaskView(item: item)
         } label: {
             HStack {
                 Image(systemName: "circle")
@@ -25,7 +25,7 @@ struct ItemView: View {
                                 tasksVM.currentLifeAmount = 10
                             }
                         }
-                        item.isCompleted = true
+//                        item.isCompleted = true
                     }
                 Text(item.name)
                     .font(.system(size: 25))
