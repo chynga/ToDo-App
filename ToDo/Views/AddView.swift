@@ -21,8 +21,8 @@ struct AddView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
-                .ignoresSafeArea()
+//            Color("BackgroundColor")
+//                .ignoresSafeArea()
             VStack {
                 
                 // MARK: PRIORITY, TEXTFIELD
@@ -82,7 +82,7 @@ struct AddView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    let item = ItemModel(name: textFieldText, isCompleted: false, priority: priority, date: dayForTask)
+                    let item = ItemModel(name: textFieldText, isCompleted: false, priority: priority, date: dayForTask, pomodoros: [])
                     tasksVM.items.append(item)
                     dismiss()
                 } label: {
@@ -99,6 +99,7 @@ struct AddView_Previews: PreviewProvider {
         NavigationView {
             AddView()
         }
+        .preferredColorScheme(.dark)
     }
 }
 

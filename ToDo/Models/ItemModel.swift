@@ -15,5 +15,11 @@ struct ItemModel: Identifiable {
 //    var notes: String
 //    var tag: String
     var date: Date
+    var pomodoros: [Pomodoro]
 }
 
+struct Pomodoro: Identifiable, Equatable {
+    let id = UUID().uuidString
+    let time: Int
+    let isCompleted: Bool
+}

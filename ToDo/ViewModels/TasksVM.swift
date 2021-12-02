@@ -12,9 +12,9 @@ class TasksVM: ObservableObject {
     @Published var currentLifeAmount = 0
     
     @Published var items: [ItemModel] = [
-        ItemModel(name: "Cisco", isCompleted: false, priority: .first, date: Date.now),
-        ItemModel(name: "DEA", isCompleted: false, priority: .second, date: Date.now),
-        ItemModel(name: "HCI", isCompleted: false, priority: .third, date: Date.now)
+        ItemModel(name: "Cisco", isCompleted: false, priority: .first, date: Date.now, pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]),
+        ItemModel(name: "DEA", isCompleted: false, priority: .second, date: Date.now, pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]),
+        ItemModel(name: "HCI", isCompleted: false, priority: .third, date: Date.now, pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)])
     ]
     
     func deleteItem(indexSet: IndexSet) {

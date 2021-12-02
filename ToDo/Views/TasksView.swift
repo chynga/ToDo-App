@@ -12,21 +12,21 @@ struct TasksView: View {
     @EnvironmentObject var tasksVM: TasksVM
     @State var showView: Bool = false
     
-    let backgroundColor = Color("BackgroundColor")
+//    let backgroundColor = Color("BackgroundColor")
     let rowSeparatorColor = Color("RowSeparatorColor")
     
     var body: some View {
             
         ZStack {
-            backgroundColor
-                .ignoresSafeArea()
+//            backgroundColor
+//                .ignoresSafeArea()
         
             //MARK: LIST
             List {
                 ForEach(tasksVM.items) { item in
-                    ItemView(item: item)
-                        .listRowBackground(backgroundColor)
-                        .listRowSeparatorTint(rowSeparatorColor)
+                    TaskView(item: item)
+//                        .listRowBackground(backgroundColor)
+//                        .listRowSeparatorTint(rowSeparatorColor)
                 }
 //                ForEach(tasksVM.items.indices) { i in
 //                    ItemView(item: self.$tasksVM.items[i])
@@ -35,7 +35,7 @@ struct TasksView: View {
 //                }
                 .onDelete(perform: tasksVM.deleteItem)
             }
-            .listStyle(.plain)
+            .listStyle(.grouped)
             
             
             // MARK: NAVIGATION STUFF
@@ -53,7 +53,7 @@ struct TasksView: View {
                         AddView()
                     } label: {
                         Image(systemName: "plus")
-                            .accentColor(.black)
+                            .accentColor(.primary)
                     }
                 }
             }
@@ -63,10 +63,13 @@ struct TasksView: View {
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            TasksView()
+        Group {
+            NavigationView {
+                TasksView()
+            }
+            .preferredColorScheme(.dark)
+            .environmentObject(TasksVM())
         }
-        .environmentObject(TasksVM())
     }
 }
 

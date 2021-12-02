@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE16B0FB273CDBCB001CB3B4 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE16B0FA273CDBCB001CB3B4 /* ItemView.swift */; };
+		EE16B0FB273CDBCB001CB3B4 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE16B0FA273CDBCB001CB3B4 /* TaskView.swift */; };
+		EE31B9E327575CAE00020292 /* PomodorosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31B9E227575CAE00020292 /* PomodorosView.swift */; };
+		EE31B9E52757651B00020292 /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31B9E42757651B00020292 /* PomodoroView.swift */; };
 		EE54BD8B27204EF0002F6272 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE54BD8A27204EF0002F6272 /* ToDoApp.swift */; };
 		EE54BD8F27204EF0002F6272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE54BD8E27204EF0002F6272 /* Assets.xcassets */; };
 		EE54BD9227204EF0002F6272 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE54BD9127204EF0002F6272 /* Preview Assets.xcassets */; };
@@ -15,12 +17,14 @@
 		EE724199273CAD28005D8D2A /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE724198273CAD28005D8D2A /* ItemModel.swift */; };
 		EE72419B273CB7DA005D8D2A /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE72419A273CB7DA005D8D2A /* TasksView.swift */; };
 		EE72419D273CB850005D8D2A /* TasksVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE72419C273CB850005D8D2A /* TasksVM.swift */; };
-		EEA303DA274E691D00C5486E /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA303D9274E691D00C5486E /* TaskView.swift */; };
+		EEA303DA274E691D00C5486E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA303D9274E691D00C5486E /* TimerView.swift */; };
 		EEA9EECB27476E7700595B23 /* PriorityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA9EECA27476E7700595B23 /* PriorityType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EE16B0FA273CDBCB001CB3B4 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		EE16B0FA273CDBCB001CB3B4 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		EE31B9E227575CAE00020292 /* PomodorosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodorosView.swift; sourceTree = "<group>"; };
+		EE31B9E42757651B00020292 /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
 		EE54BD8727204EF0002F6272 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE54BD8A27204EF0002F6272 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
 		EE54BD8E27204EF0002F6272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -29,7 +33,7 @@
 		EE724198273CAD28005D8D2A /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		EE72419A273CB7DA005D8D2A /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		EE72419C273CB850005D8D2A /* TasksVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksVM.swift; sourceTree = "<group>"; };
-		EEA303D9274E691D00C5486E /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		EEA303D9274E691D00C5486E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		EEA9EECA27476E7700595B23 /* PriorityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,9 +98,11 @@
 			isa = PBXGroup;
 			children = (
 				EE72419A273CB7DA005D8D2A /* TasksView.swift */,
+				EE16B0FA273CDBCB001CB3B4 /* TaskView.swift */,
 				EE724192273C0895005D8D2A /* AddView.swift */,
-				EE16B0FA273CDBCB001CB3B4 /* ItemView.swift */,
-				EEA303D9274E691D00C5486E /* TaskView.swift */,
+				EE31B9E227575CAE00020292 /* PomodorosView.swift */,
+				EE31B9E42757651B00020292 /* PomodoroView.swift */,
+				EEA303D9274E691D00C5486E /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,14 +193,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE31B9E327575CAE00020292 /* PomodorosView.swift in Sources */,
 				EEA9EECB27476E7700595B23 /* PriorityType.swift in Sources */,
 				EE724199273CAD28005D8D2A /* ItemModel.swift in Sources */,
 				EE72419B273CB7DA005D8D2A /* TasksView.swift in Sources */,
 				EE54BD8B27204EF0002F6272 /* ToDoApp.swift in Sources */,
-				EE16B0FB273CDBCB001CB3B4 /* ItemView.swift in Sources */,
+				EE31B9E52757651B00020292 /* PomodoroView.swift in Sources */,
+				EE16B0FB273CDBCB001CB3B4 /* TaskView.swift in Sources */,
 				EE724193273C0895005D8D2A /* AddView.swift in Sources */,
 				EE72419D273CB850005D8D2A /* TasksVM.swift in Sources */,
-				EEA303DA274E691D00C5486E /* TaskView.swift in Sources */,
+				EEA303DA274E691D00C5486E /* TimerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
