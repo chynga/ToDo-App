@@ -11,11 +11,6 @@ struct PomodorosView: View {
     var item: ItemModel
     var body: some View {
         VStack {
-//            List {
-//                ForEach(item.pomodoros) { pomodoro in
-//                    PomodoroView(pomodoro: pomodoro)
-//                }
-//            }
             ForEach(item.pomodoros) { pomodoro in
                 if item.pomodoros.first == pomodoro {
                     Divider()

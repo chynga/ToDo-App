@@ -18,21 +18,12 @@ struct TasksView: View {
     var body: some View {
             
         ZStack {
-//            backgroundColor
-//                .ignoresSafeArea()
         
             //MARK: LIST
             List {
                 ForEach(tasksVM.items) { item in
                     TaskView(item: item)
-//                        .listRowBackground(backgroundColor)
-//                        .listRowSeparatorTint(rowSeparatorColor)
                 }
-//                ForEach(tasksVM.items.indices) { i in
-//                    ItemView(item: self.$tasksVM.items[i])
-//                        .listRowBackground(backgroundColor)
-//                        .listRowSeparatorTint(rowSeparatorColor)
-//                }
                 .onDelete(perform: tasksVM.deleteItem)
             }
             .listStyle(.grouped)

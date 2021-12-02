@@ -13,7 +13,6 @@ struct AddView: View {
     @EnvironmentObject var tasksVM: TasksVM
     
     @State private var textFieldText = ""
-    @State private var textEditorText = ""
     @State private var dayForTask = Date.now
     @State private var priority: PriorityType = .third
     
@@ -25,25 +24,8 @@ struct AddView: View {
 //                .ignoresSafeArea()
             VStack {
                 
-                // MARK: PRIORITY, TEXTFIELD
+                // MARK: TEXTFIELD
                 HStack {
-                    
-//                    Picker("Please choose a priority", selection: $priority) {
-//                        
-//                    }
-//                    Picker("sdfsd", selection: $priority) {
-//                        Image(systemName: "flag")
-//                    }
-//                        .padding(.leading)
-//                    Picker(selection: $priority) {
-//                        ForEach(PriorityType.allCases) {
-//                            
-//                            Text($0.rawValue).tag($0)
-//                        }
-//                    } label: {
-//                        Image(systemName: "flag")
-//                    }
-//                    .pickerStyle(MenuPickerStyle())
 
                     TextField("Enter Title", text: $textFieldText)
                     
@@ -82,8 +64,7 @@ struct AddView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    let item = ItemModel(name: textFieldText, isCompleted: false, priority: priority, date: dayForTask, pomodoros: [])
-                    tasksVM.items.append(item)
+                    tasksVM.addItem(title: textFieldText, priority: priority, dayForTask: dayForTask)
                     dismiss()
                 } label: {
                     Text("Save")

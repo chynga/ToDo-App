@@ -19,17 +19,9 @@ struct TaskView: View {
                     .foregroundColor(getPriorityColor(priority: item.priority))
                     .font(.system(size: 25))
                     .onTapGesture {
-                        if !item.isCompleted {
-                            
-                            tasksVM.currentLifeAmount += 1
-                            if tasksVM.currentLifeAmount >= tasksVM.lifeLimit {
-                                tasksVM.currentLifeAmount = 10
-                            }
-                        }
                         withAnimation {
-                            tasksVM.items.removeAll { $0.id == item.id }
+                            tasksVM.updateItemCompletion(item: item)
                         }
-//                        item.isCompleted = true
                     }
                 Text(item.name)
                     .font(.system(size: 25))
