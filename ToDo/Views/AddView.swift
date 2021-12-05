@@ -31,10 +31,11 @@ struct AddView: View {
                     
                     Spacer()
                 }
+                Divider()
                 
-                Rectangle()
-                    .frame(maxWidth: .infinity, maxHeight: 1)
-                    .foregroundColor(Color("RowSeparatorColor"))
+//                Rectangle()
+//                    .frame(maxWidth: .infinity, maxHeight: 1)
+//                    .foregroundColor(Color("RowSeparatorColor"))
                 
                 // MARK: DATE
                 HStack {
@@ -80,7 +81,7 @@ struct AddView_Previews: PreviewProvider {
         NavigationView {
             AddView()
         }
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(.light)
     }
 }
 

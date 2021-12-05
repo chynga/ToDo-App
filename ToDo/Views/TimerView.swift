@@ -10,7 +10,7 @@ import SwiftUI
 struct TimerView: View {
     var item: ItemModel
     var body: some View {
-        Home()
+        Home(item: item)
         
     }
 }
@@ -24,13 +24,12 @@ struct TimerView_Previews: PreviewProvider {
 }
 
 struct Home : View {
+    
+    var item: ItemModel
+    @EnvironmentObject var tasksVM: TasksVM
     @Environment(\.presentationMode) var presentationMode
     
-//    init() {
-//        self.start = true
-//    }
-    
-    var maxTime : Int = 1
+    var maxTime : Int = 25
     @State var start = true
     @State var to : CGFloat = 0
     @State var count = 0
@@ -74,28 +73,17 @@ struct Home : View {
                 HStack(spacing: 20){
                     
                     Button(action: {
+                        // <-- add failed pomodoro
+                        tasksVM.addPomodoro(item: item, pomodoro: Pomodoro(time: count/60, isCompleted: false))
+                        
                         presentationMode.wrappedValue.dismiss()
-                        
-//                        if self.count == maxTime * 60{
-//
-//                            self.count = 0
-//                            withAnimation(.default){
-//
-//                                self.to = 0
-//                            }
-//                        }
-//                        self.start.toggle()
-                        
                     }) {
                         
                         HStack(spacing: 15){
                             
-//                            Image(systemName: self.start ? "pause.fill" : "play.fill")
                             Image(systemName: "pause.fill")
                                 .foregroundColor(.white)
                             
-//                            Text(self.start ? "Pause" : "Play")
-//                                .foregroundColor(.white)
                             Text("Pause")
                                 .foregroundColor(.white)
                         }
@@ -105,36 +93,6 @@ struct Home : View {
                         .clipShape(Capsule())
                         .shadow(radius: 6)
                     }
-                    
-//                    Button(action: {
-//
-//                        self.count = 0
-//
-//                        withAnimation(.default){
-//
-//                            self.to = 0
-//                        }
-//
-//                    }) {
-//
-//                        HStack(spacing: 15){
-//
-//                            Image(systemName: "arrow.clockwise")
-//                                .foregroundColor(.red)
-//
-//                            Text("Restart")
-//                                .foregroundColor(.red)
-//
-//                        }
-//                        .padding(.vertical)
-//                        .frame(width: (UIScreen.main.bounds.width / 2) - 55)
-//                        .background(
-//
-//                            Capsule()
-//                                .stroke(Color.red, lineWidth: 2)
-//                        )
-//                        .shadow(radius: 6)
-//                    }
                 }
                 .padding(.top, 55)
             }

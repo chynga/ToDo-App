@@ -39,4 +39,10 @@ class TasksVM: ObservableObject {
         }
         self.items.removeAll { $0.id == item.id }
     }
+    
+    func addPomodoro(item: ItemModel, pomodoro: Pomodoro) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            items[index] = item.addPomodoro(pomodoro: pomodoro)
+        }
+    }
 }

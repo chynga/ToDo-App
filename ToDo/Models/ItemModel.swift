@@ -8,7 +8,7 @@
 import Foundation
 
 struct ItemModel: Identifiable {
-    let id = UUID().uuidString
+    var id = UUID().uuidString
     var name: String
     var isCompleted: Bool
     var priority: PriorityType
@@ -16,6 +16,19 @@ struct ItemModel: Identifiable {
 //    var tag: String
     var date: Date
     var pomodoros: [Pomodoro]
+    
+    init(id: String = UUID().uuidString, name: String, isCompleted: Bool, priority: PriorityType, date: Date, pomodoros: [Pomodoro] = []) {
+        self.id = id
+        self.name = name
+        self.isCompleted = isCompleted
+        self.priority = priority
+        self.date = date
+        self.pomodoros = pomodoros
+    }
+    
+    func addPomodoro(pomodoro: Pomodoro) -> ItemModel {
+        return ItemModel(id: id, name: name, isCompleted: isCompleted, priority: priority, date: date, pomodoros: pomodoros + [pomodoro])
+    }
 }
 
 struct Pomodoro: Identifiable, Equatable {
