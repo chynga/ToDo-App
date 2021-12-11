@@ -11,11 +11,27 @@ import SwiftUI
 struct ToDoApp: App {
     @StateObject var tasksVM: TasksVM = TasksVM()
     
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor(named: "BackgroundColor")
+    }
+    
     var body: some Scene {
         
         WindowGroup {
-            NavigationView {
-                TasksView()
+            TabView {
+                NavigationView {
+                    StartView()
+                }
+                .tabItem {
+                    Label("Play", systemImage: "gamecontroller.fill")
+                }
+                
+                NavigationView {
+                    TasksView()
+                }
+                .tabItem {
+                    Label("ToDo", systemImage: "checkmark.circle")
+                }
             }
             .environmentObject(tasksVM)
         }
