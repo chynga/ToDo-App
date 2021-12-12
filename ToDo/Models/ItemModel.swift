@@ -8,12 +8,10 @@
 import Foundation
 
 struct ItemModel: Identifiable {
-    var id = UUID().uuidString
+    var id: String
     var name: String
     var isCompleted: Bool
     var priority: PriorityType
-//    var notes: String
-//    var tag: String
     var date: Date
     var pomodoros: [Pomodoro]
     

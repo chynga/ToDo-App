@@ -21,6 +21,7 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
         willSet {
             if (newValue) {
                 checkHighScoreAndStore()
+                decreaseLifeAmountAndStore()
                 let gameOverLayer = childNode(withName: StickHeroGameSceneChildName.GameOverLayerName.rawValue) as SKNode?
                 gameOverLayer?.run(SKAction.moveDistance(CGVector(dx: 0, dy: 100), fadeInWithDuration: 0.2))
             }
@@ -36,6 +37,7 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
     let HeroSpeed:CGFloat = 760
     
     let StoreScoreName = "com.stickHero.score"
+    let StoreLifeAmountName = "com.stickHero.lifeAmount"
  
     var isBegin = false
     var isEnd = false
@@ -274,6 +276,18 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    fileprivate func decreaseLifeAmountAndStore() {
+        var lifeAmount = UserDefaults.standard.integer(forKey: StoreLifeAmountName)
+        lifeAmount -= 1
+        
+        UserDefaults.standard.set(lifeAmount, forKey: StoreLifeAmountName)
+        UserDefaults.standard.synchronize()
+    }
+    
+    fileprivate func getLifeAmount() -> Int {
+        UserDefaults.standard.integer(forKey: StoreLifeAmountName)
+    }
+    
     fileprivate func showHighScore() {
         self.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.HighScoreAudioName.rawValue, waitForCompletion: false))
         
@@ -485,7 +499,7 @@ private extension StickHeroGameScene {
         node.addChild(retry)
         
         let heart = SKLabelNode(fontNamed: "AmericanTypewriter")
-        heart.text = "Lifes: \(10)"
+        heart.text = "Lifes: \(getLifeAmount())"
         heart.fontColor = SKColor.white
         heart.fontSize = 80
         heart.position = CGPoint(x: 0, y: -70)

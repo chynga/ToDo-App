@@ -21,6 +21,7 @@ struct GameView: View {
     var body: some View {
         SpriteView(scene: scene)
             .frame(width: screenSize.width, height: screenSize.height)
+            .statusBar(hidden: true)
     }
 }
 
