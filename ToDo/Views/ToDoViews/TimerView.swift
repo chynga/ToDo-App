@@ -17,7 +17,7 @@ struct TimerView: View {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView(item: ItemModel(name: "Cisco", isCompleted: false, priority: .third, date: Date.now, pomodoros: []))
+        TimerView(item: ItemModel(name: "Cisco", isCompleted: false, priority: .third, date: getFomatted(date: Date()), pomodoros: []))
             .preferredColorScheme(.light)
             
     }

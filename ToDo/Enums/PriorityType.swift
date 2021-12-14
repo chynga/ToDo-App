@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PriorityType: String, CaseIterable, Identifiable {
+enum PriorityType: String, CaseIterable, Identifiable, Codable {
     var id: String { self.rawValue }
     case first, second, third
 }

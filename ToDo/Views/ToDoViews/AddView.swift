@@ -65,7 +65,7 @@ struct AddView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    tasksVM.addItem(title: textFieldText, priority: priority, dayForTask: dayForTask)
+                    tasksVM.addItem(title: textFieldText, priority: priority, dayForTask: getFomatted(date: dayForTask))
                     dismiss()
                 } label: {
                     Text("Save")
@@ -109,6 +109,12 @@ struct SelectDate: View {
         }
         .padding()
     }
+}
+
+func getFomatted(date: Date) -> String {
+    let formatter1 = DateFormatter()
+    formatter1.dateFormat = "d MMM y"
+    return formatter1.string(from: date)
 }
 
 //func getFlag(type: PriorityType) -> Image {

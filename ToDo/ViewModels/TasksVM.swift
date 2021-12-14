@@ -14,34 +14,36 @@ class TasksVM: ObservableObject {
     let lifeLimit = 10
     @AppStorage("com.stickHero.lifeAmount") var currentLifeAmount = 0
     
-    @Published var items: [ItemModel] = [
-        ItemModel(name: "Cisco", isCompleted: false, priority: .first, date: Date.now, pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]),
-        ItemModel(name: "DEA", isCompleted: false, priority: .second, date: Date.now, pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]),
-        ItemModel(name: "HCI", isCompleted: false, priority: .third, date: Date.now, pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)])
-    ]
-//    @Published var items: [ItemModel] = [] {
-//        didSet {
-//            saveItems()
-//        }
-//    }
-//
-//    init() {
-//        getItems()
-//    }
     
-//    func getItems() {
-//        guard
-//            let data = UserDefaults.standard.data(forKey: itemsKey),
-//            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
-//        else { return }
-//        self.items = savedItems
-//    }
+//    @Published var items: [ItemModel] = [
+//        ItemModel(name: "Cisco", isCompleted: false, priority: .first, date: getDate(), pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]),
+//        ItemModel(name: "DEA", isCompleted: false, priority: .second, date: getDate(), pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]),
+//        ItemModel(name: "HCI", isCompleted: false, priority: .third, date: getDate(), pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)])
+//    ]
+    
+    @Published var items: [ItemModel] = [] {
+        didSet {
+            saveItems()
+        }
+    }
+
+    init() {
+        getItems()
+    }
+    
+    func getItems() {
+        guard
+            let data = UserDefaults.standard.data(forKey: itemsKey),
+            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
+        else { return }
+        self.items = savedItems
+    }
     
     func deleteItem(indexSet: IndexSet) {
         items.remove(atOffsets: indexSet)
     }
     
-    func addItem (title: String, priority: PriorityType, dayForTask: Date) {
+    func addItem (title: String, priority: PriorityType, dayForTask: String) {
         let item = ItemModel(name: title, isCompleted: false, priority: priority, date: dayForTask, pomodoros: [])
         items.append(item)
     }
@@ -66,9 +68,16 @@ class TasksVM: ObservableObject {
         }
     }
     
-//    func saveItems() {
-//        if let encodedData = try? JSONEncoder().encode(items) {
-//            UserDefaults.standard.set(encodedData, forKey: itemsKey )
-//        }
-//    }
+    func saveItems() {
+        if let encodedData = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encodedData, forKey: itemsKey )
+        }
+    }
+}
+
+func getDate() -> String {
+    let today = Date()
+    let formatter1 = DateFormatter()
+    formatter1.dateFormat = "d MMM y"
+    return formatter1.string(from: today)
 }

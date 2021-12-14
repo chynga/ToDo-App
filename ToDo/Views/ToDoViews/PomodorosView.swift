@@ -40,7 +40,7 @@ struct PomodorosView: View {
 struct PomodorosView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PomodorosView(item: ItemModel(name: "Cisco", isCompleted: false, priority: .third, date: Date.now, pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]))
+            PomodorosView(item: ItemModel(name: "Cisco", isCompleted: false, priority: .third, date: getFomatted(date: Date()), pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]))
         }
         
     }

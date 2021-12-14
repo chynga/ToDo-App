@@ -28,7 +28,8 @@ struct TaskView: View {
                 
                 Spacer()
                 
-                Text(item.date, style: .date)
+                Text(item.date)
+//                Text(item.date, style: .date)
             }
             .frame(maxWidth: .infinity, maxHeight: 45)
         }
@@ -38,7 +39,7 @@ struct TaskView: View {
 struct TaskView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            let item1 = ItemModel(name: "Cisco", isCompleted: false, priority: .first, date: Date.now, pomodoros: [])
+            let item1 = ItemModel(name: "Cisco", isCompleted: false, priority: .first, date: getFomatted(date: Date()), pomodoros: [])
             TaskView(item: item1)
                 .previewLayout(.sizeThatFits)
         }

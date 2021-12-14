@@ -24,6 +24,9 @@ struct PlayView: View {
                     .cornerRadius(10)
             }
         }
+        .onAppear {
+            tasksVM.currentLifeAmount = UserDefaults.standard.integer(forKey: "com.stickHero.lifeAmount")
+        }
     }
 }
 

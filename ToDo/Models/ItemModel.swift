@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct ItemModel: Identifiable {
+struct ItemModel: Identifiable, Codable {
     var id: String
     var name: String
     var isCompleted: Bool
     var priority: PriorityType
-    var date: Date
+    var date: String
     var pomodoros: [Pomodoro]
     
-    init(id: String = UUID().uuidString, name: String, isCompleted: Bool, priority: PriorityType, date: Date, pomodoros: [Pomodoro] = []) {
+    init(id: String = UUID().uuidString, name: String, isCompleted: Bool, priority: PriorityType, date: String, pomodoros: [Pomodoro] = []) {
         self.id = id
         self.name = name
         self.isCompleted = isCompleted
@@ -29,7 +29,7 @@ struct ItemModel: Identifiable {
     }
 }
 
-struct Pomodoro: Identifiable, Equatable {
+struct Pomodoro: Identifiable, Equatable, Codable {
     let id = UUID().uuidString
     let time: Int
     let isCompleted: Bool

@@ -11,7 +11,7 @@ struct StartView: View {
     @EnvironmentObject var tasksVM: TasksVM
     
     var body: some View {
-        if tasksVM.currentLifeAmount == 0 {
+        if tasksVM.currentLifeAmount <= 0 {
             NoGameView()
         } else {
             PlayView()
