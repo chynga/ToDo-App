@@ -32,6 +32,11 @@ struct ToDoApp: App {
                 .tabItem {
                     Label("ToDo", systemImage: "checkmark.circle")
                 }
+                
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gearshape")
+                    }
             }
             .environmentObject(tasksVM)
         }

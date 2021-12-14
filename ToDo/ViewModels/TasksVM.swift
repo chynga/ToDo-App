@@ -10,6 +10,12 @@ import SwiftUI
 
 class TasksVM: ObservableObject {
     let itemsKey: String = "items_list"
+    let settingsKey: String = "settings"
+    @Published var settings = Settings.instance {
+        didSet {
+            saveSettings()
+        }
+    }
     
     let lifeLimit = 10
     @AppStorage("com.stickHero.lifeAmount") var currentLifeAmount = 0
@@ -29,6 +35,7 @@ class TasksVM: ObservableObject {
 
     init() {
         getItems()
+        getSettings()
     }
     
     func getItems() {
@@ -37,6 +44,14 @@ class TasksVM: ObservableObject {
             let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
         else { return }
         self.items = savedItems
+    }
+    
+    func getSettings() {
+        guard
+            let data = UserDefaults.standard.data(forKey: settingsKey),
+            let savedSettings = try? JSONDecoder().decode(Settings.self, from: data)
+        else { return }
+        self.settings = savedSettings
     }
     
     func deleteItem(indexSet: IndexSet) {
@@ -49,9 +64,6 @@ class TasksVM: ObservableObject {
     }
     
     func updateItemCompletion(item: ItemModel) {
-//        if let index = items.firstIndex(where: { $0.id == item.id }) {
-//            items[index] = item.updateCompletion()
-//        }
         if !item.isCompleted {
             
             self.currentLifeAmount += 1
@@ -73,11 +85,25 @@ class TasksVM: ObservableObject {
             UserDefaults.standard.set(encodedData, forKey: itemsKey )
         }
     }
+    
+    func saveSettings() {
+        if let encodedData = try? JSONEncoder().encode(settings) {
+            UserDefaults.standard.set(encodedData, forKey: settingsKey )
+        }
+    }
 }
 
-func getDate() -> String {
-    let today = Date()
-    let formatter1 = DateFormatter()
-    formatter1.dateFormat = "d MMM y"
-    return formatter1.string(from: today)
+struct Settings: Codable {
+    static let instance = Settings()
+    var isMusicOn = false
+    var isSoundOn = false
+    
+    private init() {}
 }
+
+//func getDate() -> String {
+//    let today = Date()
+//    let formatter1 = DateFormatter()
+//    formatter1.dateFormat = "d MMM y"
+//    return formatter1.string(from: today)
+//}

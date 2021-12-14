@@ -40,6 +40,7 @@ enum StickHeroGameSceneEffectAudioName: String {
     case StickTouchMidAudioName = "touch_mid.wav"
     case VictoryAudioName = "victory.wav"
     case HighScoreAudioName = "highScore.wav"
+    case EmptyAudioName = "500-milliseconds-of-silence.mp3"
 }
 
 enum StickHeroGameSceneZposition: CGFloat {

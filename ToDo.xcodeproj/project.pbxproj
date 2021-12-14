@@ -42,6 +42,9 @@
 		EEC9D5A62761F3B400FC1124 /* Defined.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D59B2761F3B400FC1124 /* Defined.swift */; };
 		EEC9D5A92761F3B400FC1124 /* StickHeroGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D5A02761F3B400FC1124 /* StickHeroGameScene.swift */; };
 		EEC9D5AA2761F3B400FC1124 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D5A12761F3B400FC1124 /* Tools.swift */; };
+		EEE0C29A27686F5900E9ADE1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0C29927686F5900E9ADE1 /* SettingsView.swift */; };
+		EEE0C29C2768810A00E9ADE1 /* 500-milliseconds-of-silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEE0C29B2768810A00E9ADE1 /* 500-milliseconds-of-silence.mp3 */; };
+		EEE0C29E27688A9700E9ADE1 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0C29D27688A9700E9ADE1 /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,9 @@
 		EEC9D59B2761F3B400FC1124 /* Defined.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defined.swift; sourceTree = "<group>"; };
 		EEC9D5A02761F3B400FC1124 /* StickHeroGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickHeroGameScene.swift; sourceTree = "<group>"; };
 		EEC9D5A12761F3B400FC1124 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		EEE0C29927686F5900E9ADE1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EEE0C29B2768810A00E9ADE1 /* 500-milliseconds-of-silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "500-milliseconds-of-silence.mp3"; sourceTree = "<group>"; };
+		EEE0C29D27688A9700E9ADE1 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,7 @@
 				EEAF2CC6273E066200C6781F /* ViewModels */,
 				EEAF2CC5273E065200C6781F /* Models */,
 				EEA9EEC927476E5A00595B23 /* Enums */,
+				EEE0C29D27688A9700E9ADE1 /* SoundManager.swift */,
 				EE54BD8E27204EF0002F6272 /* Assets.xcassets */,
 				EE54BD9027204EF0002F6272 /* Preview Content */,
 				EEC9D5982761F3B400FC1124 /* Stick-Hero */,
@@ -177,6 +184,7 @@
 		EE5F67A22761F49D003A031A /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				EEE0C29B2768810A00E9ADE1 /* 500-milliseconds-of-silence.mp3 */,
 				EE5F67A32761F49D003A031A /* stick_grow_loop.wav */,
 				EE5F67A42761F49D003A031A /* fall.wav */,
 				EE5F67A52761F49D003A031A /* victory.wav */,
@@ -202,6 +210,7 @@
 			children = (
 				EEE53EF92761DEBD005D764F /* GameViews */,
 				EEC255082761B9AF00BD5078 /* ToDoViews */,
+				EEE0C29927686F5900E9ADE1 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE5F67B62761F49D003A031A /* kick.wav in Resources */,
+				EEE0C29C2768810A00E9ADE1 /* 500-milliseconds-of-silence.mp3 in Resources */,
 				EE5F67B12761F49D003A031A /* starParticle.png in Resources */,
 				EE5F67AF2761F49D003A031A /* button_retry_down.png in Resources */,
 				EE5F67B92761F49D003A031A /* dead.wav in Resources */,
@@ -350,6 +360,7 @@
 				EEC9D5A42761F3B400FC1124 /* GameViewController.swift in Sources */,
 				EE54BD8B27204EF0002F6272 /* ToDoApp.swift in Sources */,
 				EE31B9E52757651B00020292 /* PomodoroView.swift in Sources */,
+				EEE0C29E27688A9700E9ADE1 /* SoundManager.swift in Sources */,
 				EE16B0FB273CDBCB001CB3B4 /* TaskView.swift in Sources */,
 				EEC9D5AA2761F3B400FC1124 /* Tools.swift in Sources */,
 				EEC9D5A62761F3B400FC1124 /* Defined.swift in Sources */,
@@ -359,6 +370,7 @@
 				EEA303DA274E691D00C5486E /* TimerView.swift in Sources */,
 				EE5F67BB2761FBA3003A031A /* GameView.swift in Sources */,
 				EEC255072761B99E00BD5078 /* PlayView.swift in Sources */,
+				EEE0C29A27686F5900E9ADE1 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

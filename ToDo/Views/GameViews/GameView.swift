@@ -22,6 +22,14 @@ struct GameView: View {
         SpriteView(scene: scene)
             .frame(width: screenSize.width, height: screenSize.height)
             .statusBar(hidden: true)
+            .onAppear {
+                if tasksVM.settings.isMusicOn {
+                    SoundManager.instance.playMusic()
+                }
+            }
+            .onDisappear {
+                SoundManager.instance.stopMusic()
+            }
     }
 }
 

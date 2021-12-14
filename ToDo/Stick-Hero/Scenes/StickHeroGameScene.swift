@@ -10,7 +10,8 @@ import SpriteKit
 import SwiftUI
 
 class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
-//    @Binding var tasksVM: TasksVM
+    
+    let settingsKey: String = "settings"
     
     struct GAP {
         static let XGAP:CGFloat = 20
@@ -116,8 +117,16 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
             stick.run(action, withKey:StickHeroGameSceneActionKey.StickGrowAction.rawValue)
             
             let scaleAction = SKAction.sequence([SKAction.scaleY(to: 0.9, duration: 0.05), SKAction.scaleY(to: 1, duration: 0.05)])
-            let loopAction = SKAction.group([SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.StickGrowAudioName.rawValue, waitForCompletion: true)])
-            stick.run(SKAction.repeatForever(loopAction), withKey: StickHeroGameSceneActionKey.StickGrowAudioAction.rawValue)
+            
+            guard
+                let data = UserDefaults.standard.data(forKey: settingsKey),
+                let savedSettings = try? JSONDecoder().decode(Settings.self, from: data)
+            else { return }
+            
+            if savedSettings.isSoundOn {
+                let loopAction = SKAction.group([SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.StickGrowAudioName.rawValue, waitForCompletion: true)])
+                stick.run(SKAction.repeatForever(loopAction), withKey: StickHeroGameSceneActionKey.StickGrowAudioAction.rawValue)
+            }
             hero.run(SKAction.repeatForever(scaleAction), withKey: StickHeroGameSceneActionKey.HeroScaleAction.rawValue)
             
             return
@@ -136,16 +145,30 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
             let stick = childNode(withName: StickHeroGameSceneChildName.StickName.rawValue) as! SKSpriteNode
             stick.removeAction(forKey: StickHeroGameSceneActionKey.StickGrowAction.rawValue)
             stick.removeAction(forKey: StickHeroGameSceneActionKey.StickGrowAudioAction.rawValue)
-            stick.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.StickGrowOverAudioName.rawValue, waitForCompletion: false))
+            
+            guard
+                let data = UserDefaults.standard.data(forKey: settingsKey),
+                let savedSettings = try? JSONDecoder().decode(Settings.self, from: data)
+            else { return }
+            
+            if savedSettings.isSoundOn {
+                stick.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.StickGrowOverAudioName.rawValue, waitForCompletion: false))
+            }
             
             stickHeight = stick.size.height;
             
             let action = SKAction.rotate(toAngle: CGFloat(-Double.pi / 2), duration: 0.4, shortestUnitArc: true)
-            let playFall = SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.StickFallAudioName.rawValue, waitForCompletion: false)
             
+            guard
+                let data = UserDefaults.standard.data(forKey: settingsKey),
+                let savedSettings = try? JSONDecoder().decode(Settings.self, from: data)
+            else { return }
+            
+            let playFall = SKAction.playSoundFileNamed(savedSettings.isSoundOn ? StickHeroGameSceneEffectAudioName.StickFallAudioName.rawValue : StickHeroGameSceneEffectAudioName.EmptyAudioName.rawValue, waitForCompletion: false)
             stick.run(SKAction.sequence([SKAction.wait(forDuration: 0.2), action, playFall]), completion: {[unowned self] () -> Void in
                 self.heroGo(self.checkPass())
             })
+            
         }
     }
     
@@ -204,7 +227,16 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
         
         if ((stick.position.x + self.stickHeight) >= newPoint.x  && (stick.position.x + self.stickHeight) <= newPoint.x + 20) {
             loadPerfect()
-            self.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.StickTouchMidAudioName.rawValue, waitForCompletion: false))
+            
+            guard
+                let data = UserDefaults.standard.data(forKey: settingsKey),
+                let savedSettings = try? JSONDecoder().decode(Settings.self, from: data)
+            else { return }
+            
+            if savedSettings.isSoundOn {
+                self.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.StickTouchMidAudioName.rawValue, waitForCompletion: false))
+            }
+            
             score += 1
         }
  
@@ -239,7 +271,16 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
                 stick.run(SKAction.rotate(toAngle: CGFloat(-Double.pi), duration: 0.4))
                 
                 hero.physicsBody!.affectedByGravity = true
-                hero.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.DeadAudioName.rawValue, waitForCompletion: false))
+                
+                guard
+                    let data = UserDefaults.standard.data(forKey: settingsKey),
+                    let savedSettings = try? JSONDecoder().decode(Settings.self, from: data)
+                else { return }
+                
+                if savedSettings.isSoundOn {
+                    hero.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.DeadAudioName.rawValue, waitForCompletion: false))
+                }
+                
                 hero.removeAction(forKey: StickHeroGameSceneActionKey.WalkAction.rawValue)
                 self.run(SKAction.wait(forDuration: 0.5), completion: {[unowned self] () -> Void in
                     self.gameOver = true
@@ -260,7 +301,15 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
         hero.run(move, completion: { [unowned self]() -> Void in
             self.score += 1
             
-            hero.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.VictoryAudioName.rawValue, waitForCompletion: false))
+            guard
+                let data = UserDefaults.standard.data(forKey: settingsKey),
+                let savedSettings = try? JSONDecoder().decode(Settings.self, from: data)
+            else { return }
+            
+            if savedSettings.isSoundOn {
+                hero.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.VictoryAudioName.rawValue, waitForCompletion: false))
+            }
+            
             hero.removeAction(forKey: StickHeroGameSceneActionKey.WalkAction.rawValue)
             self.moveStackAndCreateNew()
         }) 
@@ -289,7 +338,15 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     fileprivate func showHighScore() {
-        self.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.HighScoreAudioName.rawValue, waitForCompletion: false))
+        
+        guard
+            let data = UserDefaults.standard.data(forKey: settingsKey),
+            let savedSettings = try? JSONDecoder().decode(Settings.self, from: data)
+        else { return }
+        
+        if savedSettings.isSoundOn {
+            self.run(SKAction.playSoundFileNamed(StickHeroGameSceneEffectAudioName.HighScoreAudioName.rawValue, waitForCompletion: false))
+        }
         
         let wait = SKAction.wait(forDuration: 0.4)
         let grow = SKAction.scale(to: 1.5, duration: 0.4)
