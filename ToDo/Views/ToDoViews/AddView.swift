@@ -65,6 +65,7 @@ struct AddView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
+                    print("sdfsdf")
                     tasksVM.addItem(title: textFieldText, priority: priority, dayForTask: getFomatted(date: dayForTask))
                     dismiss()
                 } label: {

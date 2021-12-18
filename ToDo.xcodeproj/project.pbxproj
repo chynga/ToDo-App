@@ -10,10 +10,17 @@
 		EE16B0FB273CDBCB001CB3B4 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE16B0FA273CDBCB001CB3B4 /* TaskView.swift */; };
 		EE31B9E327575CAE00020292 /* PomodorosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31B9E227575CAE00020292 /* PomodorosView.swift */; };
 		EE31B9E52757651B00020292 /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31B9E42757651B00020292 /* PomodoroView.swift */; };
+		EE3DE96E276AE38000A2BD52 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EE3DE96D276AE38000A2BD52 /* FirebaseAuth */; };
+		EE3DE970276AE38000A2BD52 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EE3DE96F276AE38000A2BD52 /* FirebaseFirestore */; };
+		EE3DE972276AE38000A2BD52 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EE3DE971276AE38000A2BD52 /* FirebaseStorage */; };
+		EE3DE974276AF07400A2BD52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE3DE973276AF07400A2BD52 /* GoogleService-Info.plist */; };
+		EE3DE976276AF0BF00A2BD52 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3DE975276AF0BF00A2BD52 /* LoginView.swift */; };
+		EE3DE979276B155800A2BD52 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3DE978276B155800A2BD52 /* FirebaseManager.swift */; };
 		EE54BD8B27204EF0002F6272 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE54BD8A27204EF0002F6272 /* ToDoApp.swift */; };
 		EE54BD8F27204EF0002F6272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE54BD8E27204EF0002F6272 /* Assets.xcassets */; };
 		EE54BD9227204EF0002F6272 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE54BD9127204EF0002F6272 /* Preview Assets.xcassets */; };
 		EE55884427622DC900341611 /* stick_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EE55884327622DC900341611 /* stick_background.jpg */; };
+		EE5ED450276C622A00605E1F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5ED44F276C622A00605E1F /* UserModel.swift */; };
 		EE5F67AB2761F49D003A031A /* button_retry_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5F679A2761F49D003A031A /* button_retry_up.png */; };
 		EE5F67AC2761F49D003A031A /* human1.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5F679B2761F49D003A031A /* human1.png */; };
 		EE5F67AD2761F49D003A031A /* human2.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5F679C2761F49D003A031A /* human2.png */; };
@@ -51,11 +58,15 @@
 		EE16B0FA273CDBCB001CB3B4 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		EE31B9E227575CAE00020292 /* PomodorosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodorosView.swift; sourceTree = "<group>"; };
 		EE31B9E42757651B00020292 /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
+		EE3DE973276AF07400A2BD52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EE3DE975276AF0BF00A2BD52 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EE3DE978276B155800A2BD52 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		EE54BD8727204EF0002F6272 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE54BD8A27204EF0002F6272 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
 		EE54BD8E27204EF0002F6272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE54BD9127204EF0002F6272 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EE55884327622DC900341611 /* stick_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stick_background.jpg; sourceTree = "<group>"; };
+		EE5ED44F276C622A00605E1F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		EE5F679A2761F49D003A031A /* button_retry_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_retry_up.png; sourceTree = "<group>"; };
 		EE5F679B2761F49D003A031A /* human1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = human1.png; sourceTree = "<group>"; };
 		EE5F679C2761F49D003A031A /* human2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = human2.png; sourceTree = "<group>"; };
@@ -94,12 +105,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE3DE96E276AE38000A2BD52 /* FirebaseAuth in Frameworks */,
+				EE3DE970276AE38000A2BD52 /* FirebaseFirestore in Frameworks */,
+				EE3DE972276AE38000A2BD52 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE3DE977276B154900A2BD52 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EE3DE978276B155800A2BD52 /* FirebaseManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		EE54BD7E27204EF0002F6272 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				EE54BD8A27204EF0002F6272 /* ToDoApp.swift */,
+				EE3DE977276B154900A2BD52 /* Utils */,
 				EEAF2CC4273E062400C6781F /* Views */,
 				EEAF2CC6273E066200C6781F /* ViewModels */,
 				EEAF2CC5273E065200C6781F /* Models */,
@@ -127,6 +150,7 @@
 				EEE0C29D27688A9700E9ADE1 /* SoundManager.swift */,
 				EE54BD8E27204EF0002F6272 /* Assets.xcassets */,
 				EE54BD9027204EF0002F6272 /* Preview Content */,
+				EE3DE973276AF07400A2BD52 /* GoogleService-Info.plist */,
 				EEC9D5982761F3B400FC1124 /* Stick-Hero */,
 			);
 			path = ToDo;
@@ -211,6 +235,7 @@
 				EEE53EF92761DEBD005D764F /* GameViews */,
 				EEC255082761B9AF00BD5078 /* ToDoViews */,
 				EEE0C29927686F5900E9ADE1 /* SettingsView.swift */,
+				EE3DE975276AF0BF00A2BD52 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				EE724198273CAD28005D8D2A /* ItemModel.swift */,
+				EE5ED44F276C622A00605E1F /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,6 +307,11 @@
 			dependencies = (
 			);
 			name = ToDo;
+			packageProductDependencies = (
+				EE3DE96D276AE38000A2BD52 /* FirebaseAuth */,
+				EE3DE96F276AE38000A2BD52 /* FirebaseFirestore */,
+				EE3DE971276AE38000A2BD52 /* FirebaseStorage */,
+			);
 			productName = ToDo;
 			productReference = EE54BD8727204EF0002F6272 /* ToDo.app */;
 			productType = "com.apple.product-type.application";
@@ -309,6 +340,9 @@
 				Base,
 			);
 			mainGroup = EE54BD7E27204EF0002F6272;
+			packageReferences = (
+				EE3DE96C276AE38000A2BD52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = EE54BD8827204EF0002F6272 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -334,6 +368,7 @@
 				EE55884427622DC900341611 /* stick_background.jpg in Resources */,
 				EE5F67B22761F49D003A031A /* stick_grow_loop.wav in Resources */,
 				EE5F67B02761F49D003A031A /* StarExplosion.sks in Resources */,
+				EE3DE974276AF07400A2BD52 /* GoogleService-Info.plist in Resources */,
 				EE54BD9227204EF0002F6272 /* Preview Assets.xcassets in Resources */,
 				EE5F67B52761F49D003A031A /* highScore.wav in Resources */,
 				EE54BD8F27204EF0002F6272 /* Assets.xcassets in Resources */,
@@ -355,9 +390,11 @@
 				EE31B9E327575CAE00020292 /* PomodorosView.swift in Sources */,
 				EEC9D5A92761F3B400FC1124 /* StickHeroGameScene.swift in Sources */,
 				EEA9EECB27476E7700595B23 /* PriorityType.swift in Sources */,
+				EE3DE979276B155800A2BD52 /* FirebaseManager.swift in Sources */,
 				EE724199273CAD28005D8D2A /* ItemModel.swift in Sources */,
 				EE72419B273CB7DA005D8D2A /* TasksView.swift in Sources */,
 				EEC9D5A42761F3B400FC1124 /* GameViewController.swift in Sources */,
+				EE5ED450276C622A00605E1F /* UserModel.swift in Sources */,
 				EE54BD8B27204EF0002F6272 /* ToDoApp.swift in Sources */,
 				EE31B9E52757651B00020292 /* PomodoroView.swift in Sources */,
 				EEE0C29E27688A9700E9ADE1 /* SoundManager.swift in Sources */,
@@ -366,6 +403,7 @@
 				EEC9D5A62761F3B400FC1124 /* Defined.swift in Sources */,
 				EE724193273C0895005D8D2A /* AddView.swift in Sources */,
 				EE5FDC802764C4EF00BC497D /* NoGameView.swift in Sources */,
+				EE3DE976276AF0BF00A2BD52 /* LoginView.swift in Sources */,
 				EE72419D273CB850005D8D2A /* TasksVM.swift in Sources */,
 				EEA303DA274E691D00C5486E /* TimerView.swift in Sources */,
 				EE5F67BB2761FBA3003A031A /* GameView.swift in Sources */,
@@ -575,6 +613,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EE3DE96C276AE38000A2BD52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EE3DE96D276AE38000A2BD52 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE3DE96C276AE38000A2BD52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EE3DE96F276AE38000A2BD52 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE3DE96C276AE38000A2BD52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		EE3DE971276AE38000A2BD52 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE3DE96C276AE38000A2BD52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EE54BD7F27204EF0002F6272 /* Project object */;
 }

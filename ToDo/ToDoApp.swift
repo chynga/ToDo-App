@@ -16,7 +16,6 @@ struct ToDoApp: App {
     }
     
     var body: some Scene {
-        
         WindowGroup {
             TabView {
                 NavigationView {
@@ -25,14 +24,14 @@ struct ToDoApp: App {
                 .tabItem {
                     Label("Play", systemImage: "gamecontroller.fill")
                 }
-                
+
                 NavigationView {
                     TasksView()
                 }
                 .tabItem {
                     Label("ToDo", systemImage: "checkmark.circle")
                 }
-                
+
                 SettingsView()
                     .tabItem {
                         Label("Settings", systemImage: "gearshape")

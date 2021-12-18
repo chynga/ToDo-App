@@ -11,6 +11,9 @@ import SwiftUI
 class TasksVM: ObservableObject {
     let itemsKey: String = "items_list"
     let settingsKey: String = "settings"
+    
+    @Published var isUserCurrentlyLoggedOut = false
+
     @Published var settings = Settings.instance {
         didSet {
             saveSettings()
@@ -20,13 +23,6 @@ class TasksVM: ObservableObject {
     let lifeLimit = 10
     @AppStorage("com.stickHero.lifeAmount") var currentLifeAmount = 0
     
-    
-//    @Published var items: [ItemModel] = [
-//        ItemModel(name: "Cisco", isCompleted: false, priority: .first, date: getDate(), pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]),
-//        ItemModel(name: "DEA", isCompleted: false, priority: .second, date: getDate(), pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)]),
-//        ItemModel(name: "HCI", isCompleted: false, priority: .third, date: getDate(), pomodoros: [Pomodoro(time: 25, isCompleted: true), Pomodoro(time: 17, isCompleted: false), Pomodoro(time: 25, isCompleted: true)])
-//    ]
-    
     @Published var items: [ItemModel] = [] {
         didSet {
             saveItems()
@@ -34,16 +30,62 @@ class TasksVM: ObservableObject {
     }
 
     init() {
+        DispatchQueue.main.async {
+            self.isUserCurrentlyLoggedOut = FirebaseManager.shared.auth.currentUser?.uid == nil
+        }
+        
         getItems()
         getSettings()
+        fetchCurrentUser()
     }
     
     func getItems() {
-        guard
-            let data = UserDefaults.standard.data(forKey: itemsKey),
-            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
-        else { return }
-        self.items = savedItems
+        guard let id = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        let document = FirebaseManager.shared.firestore.collection("todos").document(id)
+        
+        document.getDocument { doc, error in
+            guard error == nil else { return }
+            
+            if let data = doc!.data() {
+                
+                self.text = "1"
+                var items: [ItemModel] = []
+                for (id, d) in data {
+                    guard let d = d as? [String : Any] else {
+                        self.text = "2"
+                        return
+                    }
+                    self.text = "3"
+//                    let name = d["name"] as? String
+                    let item = ItemModel(id: id, name: d["name"] as? String ?? "", isCompleted: d["isCompleted"] as? Bool ?? false, priority: PriorityType(rawValue: d["priority"] as? String ?? "") ?? .third, date: d["date"] as? String ?? "", pomodoros: [])
+                    items.append(item)
+                    self.text = "4"
+                }
+                self.items = items
+            }
+        }
+    }
+    
+    @Published var text = "12345"
+    
+    
+    func saveItems() {
+        guard let id = FirebaseManager.shared.auth.currentUser?.uid else { return }
+
+        let document = FirebaseManager.shared.firestore.collection("todos").document(id)
+            
+        document.setData(getDictionaryOfItems(items: self.items))
+    }
+    
+    private func getDictionaryOfItems(items: [ItemModel]) -> [String : [String : Any]] {
+        
+        var dictionary: [String : [String : Any]] = [:]
+        
+        for item in items {
+            dictionary[item.id] = ["name" : item.name, "priority" : item.priority.rawValue, "date" : item.date, "pomodoros" : []]
+        }
+        
+        return dictionary
     }
     
     func getSettings() {
@@ -80,30 +122,42 @@ class TasksVM: ObservableObject {
         }
     }
     
-    func saveItems() {
-        if let encodedData = try? JSONEncoder().encode(items) {
-            UserDefaults.standard.set(encodedData, forKey: itemsKey )
-        }
-    }
-    
     func saveSettings() {
         if let encodedData = try? JSONEncoder().encode(settings) {
             UserDefaults.standard.set(encodedData, forKey: settingsKey )
         }
     }
-}
-
-struct Settings: Codable {
-    static let instance = Settings()
-    var isMusicOn = false
-    var isSoundOn = false
     
-    private init() {}
-}
+    // MARK: user
+    @Published var errorMessage = ""
+    @Published var user: User?
 
-//func getDate() -> String {
-//    let today = Date()
-//    let formatter1 = DateFormatter()
-//    formatter1.dateFormat = "d MMM y"
-//    return formatter1.string(from: today)
-//}
+    func fetchCurrentUser() {
+
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            self.errorMessage = "Could not find firebase uid"
+            return
+        }
+
+        FirebaseManager.shared.firestore.collection("users").document(uid).getDocument { snapshot, error in
+            if let error = error {
+                self.errorMessage = "Failed to fetch current user: \(error)"
+                print("Failed to fetch current user:", error)
+                return
+            }
+
+            guard let data = snapshot?.data() else {
+                self.errorMessage = "No data found"
+                return
+
+            }
+            
+            self.user = .init(data: data)
+        }
+    }
+    
+    func handleSignOut() {
+        isUserCurrentlyLoggedOut.toggle()
+        try? FirebaseManager.shared.auth.signOut()
+    }
+}

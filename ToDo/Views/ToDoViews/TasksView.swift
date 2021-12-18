@@ -14,40 +14,41 @@ struct TasksView: View {
     let rowSeparatorColor = Color("RowSeparatorColor")
     
     var body: some View {
-        
             
-        ZStack {
-        
-            //MARK: LIST
-            List {
-                ForEach(tasksVM.items) { item in
-                    TaskView(item: item)
-                }
-                .onDelete(perform: tasksVM.deleteItem)
+        //MARK: LIST
+        List {
+//            Text(tasksVM.text)
+            ForEach(tasksVM.items) { item in
+                TaskView(item: item)
             }
-            .listStyle(.grouped)
-            
-            
-            // MARK: NAVIGATION STUFF
-            .navigationTitle("Tasks")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {
-                        Image(systemName: "heart.fill")
-                            .foregroundColor(.red)
-                        Text("\(tasksVM.currentLifeAmount)")
-                    }
+            .onDelete(perform: tasksVM.deleteItem)
+        }
+        .listStyle(.grouped)
+        .refreshable {
+            tasksVM.getItems()
+        }
+        
+        
+        // MARK: NAVIGATION STUFF
+        .navigationTitle("Tasks")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack {
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.red)
+                    Text("\(tasksVM.currentLifeAmount)")
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        AddView()
-                    } label: {
-                        Image(systemName: "plus")
-                            .accentColor(.primary)
-                    }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    AddView()
+                } label: {
+                    Image(systemName: "plus")
+                        .accentColor(.primary)
                 }
             }
         }
+        
     }
 }
 
