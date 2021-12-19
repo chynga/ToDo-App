@@ -29,7 +29,7 @@ struct Home : View {
     @EnvironmentObject var tasksVM: TasksVM
     @Environment(\.presentationMode) var presentationMode
     
-    var maxTime : Int = 25
+    var maxTime : Int = 1
     @State var start = true
     @State var to : CGFloat = 0
     @State var count = 0
@@ -118,6 +118,7 @@ struct Home : View {
                 else{
                     presentationMode.wrappedValue.dismiss()
                     self.start.toggle()
+                    tasksVM.addPomodoro(item: item, pomodoro: Pomodoro(time: count/60, isCompleted: true))
                     self.Notify()
                 }
 

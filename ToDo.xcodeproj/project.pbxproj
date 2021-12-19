@@ -52,6 +52,7 @@
 		EEE0C29A27686F5900E9ADE1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0C29927686F5900E9ADE1 /* SettingsView.swift */; };
 		EEE0C29C2768810A00E9ADE1 /* 500-milliseconds-of-silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEE0C29B2768810A00E9ADE1 /* 500-milliseconds-of-silence.mp3 */; };
 		EEE0C29E27688A9700E9ADE1 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0C29D27688A9700E9ADE1 /* SoundManager.swift */; };
+		EEEEB305276ED4B9009C7589 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEEB304276ED4B9009C7589 /* EditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		EEE0C29927686F5900E9ADE1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EEE0C29B2768810A00E9ADE1 /* 500-milliseconds-of-silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "500-milliseconds-of-silence.mp3"; sourceTree = "<group>"; };
 		EEE0C29D27688A9700E9ADE1 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		EEEEB304276ED4B9009C7589 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 				EE72419A273CB7DA005D8D2A /* TasksView.swift */,
 				EE16B0FA273CDBCB001CB3B4 /* TaskView.swift */,
 				EE724192273C0895005D8D2A /* AddView.swift */,
+				EEEEB304276ED4B9009C7589 /* EditView.swift */,
 				EE31B9E227575CAE00020292 /* PomodorosView.swift */,
 				EE31B9E42757651B00020292 /* PomodoroView.swift */,
 				EEA303D9274E691D00C5486E /* TimerView.swift */,
@@ -388,6 +391,7 @@
 			files = (
 				EE5FDC7E2764C46300BC497D /* StartView.swift in Sources */,
 				EE31B9E327575CAE00020292 /* PomodorosView.swift in Sources */,
+				EEEEB305276ED4B9009C7589 /* EditView.swift in Sources */,
 				EEC9D5A92761F3B400FC1124 /* StickHeroGameScene.swift in Sources */,
 				EEA9EECB27476E7700595B23 /* PriorityType.swift in Sources */,
 				EE3DE979276B155800A2BD52 /* FirebaseManager.swift in Sources */,

@@ -24,7 +24,7 @@ struct SettingsView: View {
                 Button {
                     self.tasksVM.handleSignOut()
                 } label: {
-                    Text("Log out")
+                    Text(tasksVM.user == nil ? "Log in / Register" : "Log out")
                         .foregroundColor(.red)
                 }
                 .fullScreenCover(isPresented: $tasksVM.isUserCurrentlyLoggedOut, onDismiss: nil) {

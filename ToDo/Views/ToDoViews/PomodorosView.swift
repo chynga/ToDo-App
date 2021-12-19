@@ -34,6 +34,15 @@ struct PomodorosView: View {
             Spacer()
         }
         .padding()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    EditView(item: item)
+                } label: {
+                    Text("Edit")
+                }
+            }
+        }
     }
 }
 
