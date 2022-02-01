@@ -47,26 +47,11 @@ class TasksVM: ObservableObject {
             guard error == nil else { return }
             
             if let data = doc!.data() {
-                
-                self.text = "1"
-                var items: [ItemModel] = []
-                for (id, d) in data {
-                    guard let d = d as? [String : Any] else {
-                        self.text = "2"
-                        return
-                    }
-                    self.text = "3"
-//                    let name = d["name"] as? String
-                    let item = ItemModel(id: id, name: d["name"] as? String ?? "", isCompleted: d["isCompleted"] as? Bool ?? false, priority: PriorityType(rawValue: d["priority"] as? String ?? "") ?? .third, date: d["date"] as? String ?? "", pomodoros: [])
-                    items.append(item)
-                    self.text = "4"
-                }
-                self.items = items
+                let data = try? JSONDecoder().decode([ItemModel].self, from: data[id] as! Data)
+                self.items = data ?? []
             }
         }
     }
-    
-    @Published var text = "12345"
     
     
     func saveItems() {
@@ -74,18 +59,12 @@ class TasksVM: ObservableObject {
 
         let document = FirebaseManager.shared.firestore.collection("todos").document(id)
             
-        document.setData(getDictionaryOfItems(items: self.items))
+        document.setData([id:getDictionaryOfItems(items: self.items)])
     }
     
-    private func getDictionaryOfItems(items: [ItemModel]) -> [String : [String : Any]] {
-        
-        var dictionary: [String : [String : Any]] = [:]
-        
-        for item in items {
-            dictionary[item.id] = ["name" : item.name, "priority" : item.priority.rawValue, "date" : item.date, "pomodoros" : []]
-        }
-        
-        return dictionary
+    private func getDictionaryOfItems(items: [ItemModel]) -> Any {
+        let data = try? JSONEncoder().encode(items)
+        return data ?? []
     }
     
     func getSettings() {
