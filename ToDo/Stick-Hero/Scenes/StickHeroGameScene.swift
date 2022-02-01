@@ -192,7 +192,6 @@ class StickHeroGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func restart() {
-        //记录分数
         isBegin = false
         isEnd = false
         score = 0

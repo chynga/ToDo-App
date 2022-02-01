@@ -17,7 +17,6 @@ struct TasksView: View {
             
         //MARK: LIST
         List {
-//            Text(tasksVM.text)
             ForEach(tasksVM.items) { item in
                 TaskView(item: item)
             }

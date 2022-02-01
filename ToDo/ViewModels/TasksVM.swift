@@ -96,6 +96,12 @@ class TasksVM: ObservableObject {
         self.settings = savedSettings
     }
     
+    func saveSettings() {
+        if let encodedData = try? JSONEncoder().encode(settings) {
+            UserDefaults.standard.set(encodedData, forKey: settingsKey )
+        }
+    }
+    
     func deleteItem(indexSet: IndexSet) {
         items.remove(atOffsets: indexSet)
     }
@@ -125,12 +131,6 @@ class TasksVM: ObservableObject {
     func addPomodoro(item: ItemModel, pomodoro: Pomodoro) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items[index] = item.addPomodoro(pomodoro: pomodoro)
-        }
-    }
-    
-    func saveSettings() {
-        if let encodedData = try? JSONEncoder().encode(settings) {
-            UserDefaults.standard.set(encodedData, forKey: settingsKey )
         }
     }
     

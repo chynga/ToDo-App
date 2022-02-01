@@ -90,9 +90,4 @@ func getUnFomatted(dateString: String) -> Date {
     dateFmt.dateFormat = format
     let newreadableDate = dateFmt.date(from: dateString)
     return newreadableDate ?? Date()
-//    dateFmt.dateFormat = "MMM dd hh:mm a"
-//    print("Formatted date is : \(dateFmt.string(from: newreadableDate!))")
-//    let formatter1 = DateFormatter()
-//    formatter1.dateFormat = "d MMM y"
-//    return formatter1.string(from: date)
 }

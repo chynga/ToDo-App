@@ -20,8 +20,6 @@ struct AddView: View {
     
     var body: some View {
         ZStack {
-//            Color("BackgroundColor")
-//                .ignoresSafeArea()
             VStack {
                 
                 // MARK: TEXTFIELD
@@ -32,10 +30,6 @@ struct AddView: View {
                     Spacer()
                 }
                 Divider()
-                
-//                Rectangle()
-//                    .frame(maxWidth: .infinity, maxHeight: 1)
-//                    .foregroundColor(Color("RowSeparatorColor"))
                 
                 // MARK: DATE
                 HStack {
@@ -103,7 +97,6 @@ struct SelectDate: View {
             
             DatePicker("Task Day", selection: $dayForTask, in: Date()..., displayedComponents: .date)
                 .datePickerStyle(.graphical)
-//            DatePicker("Enter", selection: $dayForTask)
             
             Spacer()
         }
